@@ -1,0 +1,14 @@
+superuser : shivam
+pass : admin
+
+1. create the project named greatkart
+2. in the main drectory create a tempates folder
+3. provide the path of the tempates in the in settings.py in the templates DIRS.
+4. to configure the static files create a folder named static inside the main project folder
+    put all static files .js,.css,images,fonts inside that static folder
+5. to confugure static files in the settings.py file define :
+STATIC_ROOT  = BASE_DIR /'static'
+STATICFILES_DIRS = [
+    'greatkart/static',
+]
+6.. run the command python manage.py collectstatic
