@@ -19,7 +19,6 @@
         </aside>
         <main class="col-md-6 border-left">
 
-
           <form action="{% url 'addcart' single_product.id %}" method="GET" >
             <article class="content-body">
 
@@ -35,23 +34,23 @@
               <div class="row">
                 <div class="item-option-select">
                   <h6>Choose Color</h6>
-                  <select name="color" class="form-control">
-                    {% for i in single_product.Variation_set.all  %}
-                    <option value="{{i.variation_value}}">{{i.variation_value}}</option>
+                  <select name="color" class="form-control" required>
+                    <option value="" disabled selected >Select</option>
+                    {% for i in single_product.variation_set.colors  %}
+                    <option value="{{i.variation_value | lower}}">{{i.variation_value | capfirst }}</option>
                     {% endfor %}
                   </select>
- 
                 </div>
               </div> <!-- row.// -->
               <div class="row">
                 <div class="item-option-select">
                   <h6>Select Size</h6>
-                  <select name="size" class="form-control">
-                    <option value="small">Small</option>
-                    <option value="medium">Medium</option>
-                    <option value="large">Large</option>
+                  <select name="color" class="form-control" required>
+                    <option value="" disabled selected >Select</option>
+                    {% for i in single_product.variation_set.sizes  %}
+                    <option value="{{i.variation_value | lower}}">{{i.variation_value | capfirst }}</option>
+                    {% endfor %}
                   </select>
-
                 </div>
               </div> <!-- row.// -->
               <hr>
@@ -67,7 +66,6 @@
                 <button type="submit" class="btn  btn-primary"> <span class="text">Add to
                     cart</span> <i class="fas fa-shopping-cart"></i> </button>
                 {% endif %}
-
                 {% endif %}
 
 
@@ -105,12 +103,8 @@
             </p>
           </div>
         </article>
-
-
-
       </div> <!-- col.// -->
     </div> <!-- row.// -->
-
 
   </div> <!-- container .//  -->
 </section>

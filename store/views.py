@@ -45,7 +45,6 @@ def productDetail(request,category_slug,product_slug):
     context = {
         'single_product':single_product,
         'inCart'        : inCart
-
     }
 
     return render(request,'store/product_detail.html',context)
