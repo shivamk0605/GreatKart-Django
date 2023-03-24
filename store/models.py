@@ -47,7 +47,7 @@ class Variation(models.Model):
     is_active           = models.BooleanField(default=True) 
     created_date        = models.DateTimeField(auto_now=True)
 
-    object = VariationManager()
+    objects = VariationManager()
 
     def __unicode__(self):
         return self.product

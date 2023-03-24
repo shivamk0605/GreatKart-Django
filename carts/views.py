@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect,get_object_or_404
-from store.models import Product
+from store.models import Product,Variation
 from .models import Cart,CartItem
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse
@@ -15,11 +15,28 @@ def _cart_id(request):    # function starting with underscore are called as priv
 
 def addCart(request,product_id):
     product = Product.objects.get(id = product_id)
+    if request.method == "POST":
+        for item in request.POST:
+            key = item
+            value = request.POST[key]
+            print("key : ",key," value : ", value)
 
-    color = request.GET.get('color') 
-    size = request.GET.get('size') 
-    return HttpResponse(color +" -> "+ size )
-    exit()
+            try:
+                variation = Variation.objects.get(product=product,variation_category=key,variation_value=value)
+            except Exception as e:
+                raise e
+
+
+    # if request.method=="POST":
+
+    
+    
+
+            
+
+            
+
+
     # creating the Cart
     try:
         cart = Cart.objects.get(cart_id = _cart_id(request))
